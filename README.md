@@ -15,6 +15,40 @@ Techno :
 - Spring boot
 - Javascript, AJAX
 
+
+## Schéma de l'Architecture :
+```mermaid
+graph TD;
+    A[Client] -->| Demande d'inscription| B(Inscription);
+    B -->|POST /api/user/register| C(UserController);
+    C -->|Appel à UserService pour créer l'utilisateur| D(UserService);
+    D -->|Accès à la base de données pour enregistrer l'utilisateur| E(Repository);
+    E -->|Enregistrement de l'utilisateur dans la base de données| E;
+    E -->|Réponse d'inscription: succès ou échec| C;
+    C -->|Réponse d'inscription| A;
+    A -->|Demande d'authentification| F(Authentification);
+    F -->|POST /api/user/login| G(UserController);
+    G -->|Appel à UserService pour authentifier l'utilisateur| H(UserService);
+    H -->|Accès à la base de données pour vérifier l'utilisateur| I(Repository);
+    I -->|Vérification de l'authentification dans la base de données| I;
+    I -->|Réponse d'authentification: succès ou échec| G;
+    G -->|Réponse d'authentification| A;
+    A -->|Demande d'achat de carte| J(Achat de carte);
+    J -->|POST /api/card/buy| K(CardController);
+    K -->|Appel à CardService pour acheter la carte| L(CardService);
+    L -->|Accès à la base de données pour traiter l'achat| M(Repository);
+    M -->|Traitement de l'achat dans la base de données| M;
+    M -->|Réponse d'achat de carte: succès ou échec| K;
+    K -->|Réponse d'achat de carte| A;
+    A -->|Demande de vente de carte| N(Vente de carte);
+    N -->|POST /api/card/sell| O(CardController);
+    O -->|Appel à CardService pour vendre la carte| P(CardService);
+    P -->|Accès à la base de données pour traiter la vente| Q(Repository);
+    Q -->|Traitement de la vente dans la base de données| Q;
+    Q -->|Réponse de vente de carte: succès ou échec| O;
+    O -->|Réponse de vente de carte| A;
+```
+
 ## Architecture Logicielle:
 
 Frontend (JavaScript + AJAX) :
