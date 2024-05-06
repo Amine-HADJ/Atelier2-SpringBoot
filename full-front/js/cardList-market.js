@@ -18,7 +18,7 @@ function setUserInfo(){
 
 document.addEventListener("DOMContentLoaded", async () => {
     user = await fetch("../json/users.json").then((response) => response.json());
-    cardList = await fetch("../json/cardList.json").then((response) => response.json());
+    cardList = await fetch("../json/cardMarket.json").then((response) => response.json());
     setUserInfo();
     setCardlist();
 });
