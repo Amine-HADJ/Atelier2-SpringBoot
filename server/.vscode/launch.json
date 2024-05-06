@@ -9,6 +9,16 @@
             "projectName": "demo1",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CardgameApplication<cardgame>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.cardgame.cardgame.CardgameApplication",
+            "projectName": "cardgame",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
