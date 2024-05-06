@@ -19,35 +19,38 @@ Techno :
 ## Schéma de l'Architecture :
 ```mermaid
 graph TD;
-    A[Client] -->| Demande d'inscription| B(Inscription);
+    A[Client] -->|Demande d'inscription| B(Inscription);
     B -->|POST /api/user/register| C(UserController);
-    C -->|Appel à UserService pour créer l'utilisateur| D(UserService);
-    D -->|Accès à la base de données pour enregistrer l'utilisateur| E(Repository);
-    E -->|Enregistrement de l'utilisateur dans la base de données| E;
-    E -->|Réponse d'inscription: succès ou échec| C;
+    C -->|Appel à UserService pour créer l'utilisateur et générer 5 cartes aléatoires| D(UserService);
+    D -->|Appel à CardService pour générer 5 cartes aléatoires| E(CardService);
+    E -->|Accès à la base de données pour enregistrer l'utilisateur et les cartes| F(Repository);
+    F -->|Enregistrement de l'utilisateur et des cartes dans la base de données| F;
+    F -->|Réponse d'inscription: succès ou échec| C;
     C -->|Réponse d'inscription| A;
-    A -->|Demande d'authentification| F(Authentification);
-    F -->|POST /api/user/login| G(UserController);
-    G -->|Appel à UserService pour authentifier l'utilisateur| H(UserService);
-    H -->|Accès à la base de données pour vérifier l'utilisateur| I(Repository);
-    I -->|Vérification de l'authentification dans la base de données| I;
-    I -->|Réponse d'authentification: succès ou échec| G;
-    G -->|Réponse d'authentification| A;
-    A -->|Demande d'achat de carte| J(Achat de carte);
-    J -->|POST /api/card/buy| K(CardController);
-    K -->|Appel à CardService pour acheter la carte| L(CardService);
-    L -->|Accès à la base de données pour traiter l'achat| M(Repository);
-    M -->|Traitement de l'achat dans la base de données| M;
-    M -->|Réponse d'achat de carte: succès ou échec| K;
-    K -->|Réponse d'achat de carte| A;
-    A -->|Demande de vente de carte| N(Vente de carte);
-    N -->|POST /api/card/sell| O(CardController);
-    O -->|Appel à CardService pour vendre la carte| P(CardService);
-    P -->|Accès à la base de données pour traiter la vente| Q(Repository);
-    Q -->|Traitement de la vente dans la base de données| Q;
-    Q -->|Réponse de vente de carte: succès ou échec| O;
-    O -->|Réponse de vente de carte| A;
+    A -->|Demande d'authentification| G(Authentification);
+    G -->|POST /api/user/login| H(UserController);
+    H -->|Appel à UserService pour authentifier l'utilisateur| I(UserService);
+    I -->|Accès à la base de données pour vérifier l'utilisateur| J(Repository);
+    J -->|Vérification de l'authentification dans la base de données| J;
+    J -->|Réponse d'authentification: succès ou échec| H;
+    H -->|Réponse d'authentification| A;
+    A -->|Demande d'achat de carte| K(Achat de carte);
+    K -->|POST /api/card/buy| L(CardController);
+    L -->|Appel à CardService pour acheter la carte| M(CardService);
+    M -->|Accès à la base de données pour traiter l'achat| N(Repository);
+    N -->|Traitement de l'achat dans la base de données| N;
+    N -->|Réponse d'achat de carte: succès ou échec| L;
+    L -->|Réponse d'achat de carte| A;
+    A -->|Demande de vente de carte| O(Vente de carte);
+    O -->|POST /api/card/sell| P(CardController);
+    P -->|Appel à CardService pour vendre la carte| Q(CardService);
+    Q -->|Accès à la base de données pour traiter la vente| R(Repository);
+    R -->|Traitement de la vente dans la base de données| R;
+    R -->|Réponse de vente de carte: succès ou échec| P;
+    P -->|Réponse de vente de carte| A;
+
 ```
+
 
 ## Architecture Logicielle:
 
