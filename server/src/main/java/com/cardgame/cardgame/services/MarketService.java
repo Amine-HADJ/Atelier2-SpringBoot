@@ -3,9 +3,13 @@ package com.cardgame.cardgame.services;
 import org.springframework.stereotype.Service;
 
 import com.cardgame.cardgame.models.Card;
+import com.cardgame.cardgame.models.User;
 import com.cardgame.cardgame.repositories.CardRepo;
 import com.cardgame.cardgame.repositories.InventoryRepo;
 import com.cardgame.cardgame.repositories.UserRepo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -60,4 +64,22 @@ public class MarketService {
             inventoryRepo.findById(userId).get().getCards().remove(card);
 
         }
+
+        public List<Card> getCards() {
+            return cardRepo.findAll();
+        }
+
+        public ArrayList<String, Double> getUsersDetails(Integer userId) {
+            String username = userRepo.findById(userId).get().getUsername();
+            Double userMoney = userRepo.findById(userId).get().getWallet();
+
+            return new ArrayList<String, Double>(username, userMoney);
+
+            
+
+
+        }
+
+
+
     }

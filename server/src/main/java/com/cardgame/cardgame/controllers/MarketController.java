@@ -6,6 +6,9 @@ import com.cardgame.cardgame.services.MarketService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -29,4 +32,17 @@ public class MarketController {
     public void sellCard(@RequestParam Integer userId, @RequestParam Card card) {
         mService.sellCard(userId, card);
     }
+
+    @GetMapping("/getcards")
+    public List<Card> getCards() {
+        return mService.getCards();
+    }
+
+    @GetMapping("/getusers")
+    public List<User> getUsers() {
+        return mService.getUsersDetails();
+    }
+
+
+    
 }
