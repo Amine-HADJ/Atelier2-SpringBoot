@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,10 +19,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestParam String username, @RequestParam String email, @RequestParam String password) {
-        boolean exists = uService.checkIfUserExists(username, email);
+    public ResponseEntity<String> register(@RequestBody User user) {
+        boolean exists = uService.checkIfUserExists(user.getUsername(), user.getEmail());
         if (!exists) {
-            User user = new User(username, email, password);
             uService.registerUser(user);
             return ResponseEntity.ok("success");
         } else {

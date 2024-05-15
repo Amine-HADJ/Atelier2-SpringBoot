@@ -1,16 +1,10 @@
 package com.cardgame.cardgame.controllers;
 
-import com.cardgame.cardgame.models.User;
-import com.cardgame.cardgame.models.Card;
+import com.cardgame.cardgame.models.requests.MarketRequest;
 import com.cardgame.cardgame.services.MarketService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -23,26 +17,13 @@ public class MarketController {
     }
 
     @PostMapping("/buycard")
-    public void buyCard(@RequestParam Integer userId, @RequestParam Card card) {
-        mService.buyCard(userId, card);
+    public void buyCard(@RequestBody MarketRequest req) {
+        mService.buyCard(req.getUserId(), req.getCard());
     }
 
 
     @PostMapping("/sellcard")
-    public void sellCard(@RequestParam Integer userId, @RequestParam Card card) {
-        mService.sellCard(userId, card);
+    public void sellCard(@RequestBody MarketRequest req) {
+        mService.sellCard(req.getUserId(), req.getCard());
     }
-
-    @GetMapping("/getcards")
-    public List<Card> getCards() {
-        return mService.getCards();
-    }
-
-    @GetMapping("/getusers")
-    public List<User> getUsers() {
-        return mService.getUsersDetails();
-    }
-
-
-    
 }
