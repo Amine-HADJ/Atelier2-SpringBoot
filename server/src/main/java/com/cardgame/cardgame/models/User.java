@@ -18,7 +18,7 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.wallet = 0.0;
+        this.wallet = 500.0;
     }
 
     public Integer getId() {

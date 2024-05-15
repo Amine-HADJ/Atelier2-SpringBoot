@@ -22,6 +22,13 @@ public class UserService {
         this.inventoryRepo = inventoryRepo;
     }
 
+    public boolean checkIfUserExists(String username, String email){
+        boolean byEmail = userRepo.findByEmail(email) != null;
+        boolean byUsername = userRepo.findByUsername(username) != null;
+
+        return byEmail && byUsername;
+    }
+
     public User registerUser(User user) {
         User savedUser = userRepo.save(user);
         List<Card> cards = cardService.generateCards();

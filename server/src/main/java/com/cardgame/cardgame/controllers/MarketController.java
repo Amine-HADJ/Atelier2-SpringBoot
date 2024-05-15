@@ -29,9 +29,4 @@ public class MarketController {
     public void sellCard(@RequestParam Integer userId, @RequestParam Card card) {
         mService.sellCard(userId, card);
     }
-
-   
-
-    
-    
 }
