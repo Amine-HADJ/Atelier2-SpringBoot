@@ -1,4 +1,5 @@
 package com.cardgame.cardgame.models;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -8,14 +9,23 @@ public class Card {
     @Id
     @GeneratedValue
     private Integer id;
+    @Column(nullable = true)
     private String familyName;
+    @Column(nullable = true)
     private String imgSrc;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = true)
     private String description;
+    @Column(nullable = false)
     private int hp;
+    @Column(nullable = false)
     private int energy;
+    @Column(nullable = false)
     private int attack;
+    @Column(nullable = false)
     private int defense;
+    @Column(nullable = false)
     private double price;
 
     public Card(String familyName, String imgSrc, String name, String description, int hp, int energy, int attack, int defense, double price) {

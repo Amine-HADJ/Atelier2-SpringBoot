@@ -2,6 +2,7 @@ package com.cardgame.cardgame.models;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -13,7 +14,9 @@ public class Inventory {
     @Id
     @GeneratedValue
     private Integer id;
+    @Column(nullable = false)
     private Integer userId;
+    @Column(nullable = true)
     private List<Card> cards;
     
 
