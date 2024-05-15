@@ -1,6 +1,5 @@
 package com.cardgame.cardgame.models;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -10,13 +9,9 @@ public class User {
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(nullable = false)
     private String username;
-    @Column(nullable = false)
     private String password;
-    @Column(nullable = false)
     private String email;
-    @Column(nullable = false)
     private double wallet;
 
     public User(String username, String email, String password) {

@@ -38,7 +38,7 @@ public class MarketService {
         inventoryRepo.findById(userId).get().addCard(card);
 
         //Update user wallet
-        userRepo.findById(userId).get().setWallet( - (double) card.getPrice() );
+        userRepo.findById(userId).get().setWallet( -card.getPrice() );
 
         //Remove card from cardRepo
         cardRepo.deleteById(card.getId());
@@ -57,7 +57,7 @@ public class MarketService {
             cardRepo.save(card);
 
             //Update user wallet
-            userRepo.findById(userId).get().setWallet( (double) card.getPrice() );
+            userRepo.findById(userId).get().setWallet(card.getPrice() );
 
             //Remove card from user inventory
             inventoryRepo.findById(userId).get().getCards().remove(card);

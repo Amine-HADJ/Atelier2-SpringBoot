@@ -1,5 +1,4 @@
 package com.cardgame.cardgame.models;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -57,7 +56,7 @@ public class Card {
     // Default constructor is required for JPA
     public Card() {}
 
-    public Card(String familyName, String imgSrc, String name, String description, int hp, int energy, int attack, int defense, double price) {
+    public Card(String familyName, String imgSrc, String name, String description, int hp, int energy, int attack, int defense, int price) {
         this.familyName = familyName;
         this.imgSrc = imgSrc;
         this.name = name;
@@ -144,7 +143,7 @@ public class Card {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 }
