@@ -1,11 +1,10 @@
 package com.cardgame.cardgame.models;
 
-import org.hibernate.mapping.List;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import java.util.ArrayList;
 
 
 
@@ -15,10 +14,10 @@ public class Inventory {
     @GeneratedValue
     private Integer id;
     private Integer userId;
-    private ArrayList<Card> cards;
+    private List<Card> cards;
     
 
-    public Inventory(Integer userId, ArrayList<Card> cards) {
+    public Inventory(Integer userId, List<Card> cards) {
         this.userId = userId;
         this.cards = cards;
     }
@@ -31,7 +30,7 @@ public class Inventory {
         return userId;
     }
 
-    public ArrayList<Card> getCards() {
+    public List<Card> getCards() {
         return cards;
     }
 
