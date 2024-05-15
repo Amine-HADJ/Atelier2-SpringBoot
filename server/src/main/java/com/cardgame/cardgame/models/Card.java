@@ -1,32 +1,61 @@
 package com.cardgame.cardgame.models;
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
 public class Card {
     @Id
-    @GeneratedValue
     private Integer id;
-    @Column(nullable = true)
+   /*  
+    @Column(nullable = true, length = 50)
     private String familyName;
-    @Column(nullable = true)
+    
+    @Column(nullable = true, length = 255)
     private String imgSrc;
-    @Column(nullable = false)
+    
+    @Column(nullable = false, length = 50)
     private String name;
-    @Column(nullable = true)
+    
+    @Column(nullable = true, length = 255)
     private String description;
+    
     @Column(nullable = false)
     private int hp;
+    
     @Column(nullable = false)
     private int energy;
+    
     @Column(nullable = false)
     private int attack;
+    
     @Column(nullable = false)
     private int defense;
+    
     @Column(nullable = false)
     private double price;
+*/
+
+
+    private String familyName;
+    
+    private String imgSrc;
+    
+    private String name;
+    
+    private String description;
+    
+    private int hp;
+    
+    private int energy;
+    
+    private int attack;
+    
+    private int defense;
+    
+    private double price;
+    // Default constructor is required for JPA
+    public Card() {}
 
     public Card(String familyName, String imgSrc, String name, String description, int hp, int energy, int attack, int defense, double price) {
         this.familyName = familyName;
@@ -39,9 +68,12 @@ public class Card {
         this.defense = defense;
         this.price = price;
     }
-
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
     
     public String getFamilyName() {

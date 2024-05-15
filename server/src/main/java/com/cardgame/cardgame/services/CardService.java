@@ -12,11 +12,11 @@ import java.util.List;
 @Service
 public class CardService {
 
-    private CardRepo cardRepo;
+    private final CardRepo cardRepo;
     private final ImgGeneratorService imgGeneratorService;
     private final PromptGeneratorService promptGeneratorService;
 
-    @Autowired
+
     public CardService(CardRepo cardRepo, ImgGeneratorService imgGeneratorService, PromptGeneratorService promptGeneratorService) {
         this.cardRepo = cardRepo;
         this.imgGeneratorService = imgGeneratorService;
