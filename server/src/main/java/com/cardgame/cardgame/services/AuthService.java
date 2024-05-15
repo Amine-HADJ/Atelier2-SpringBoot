@@ -4,9 +4,6 @@ import com.cardgame.cardgame.models.User;
 import com.cardgame.cardgame.repositories.UserRepo;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class AuthService {
 
@@ -16,13 +13,14 @@ public class AuthService {
         this.uRepo = uRepo;   
     }
 
-    public List<User> getAllUsers(){
-        List<User> localAList=new ArrayList<>();
-        Iterable<User> it = uRepo.findAll();
-        for(User a : it){
-            localAList.add(a);
+    public boolean checkLogin(String identifier, String password){
+        User userByEmail = uRepo.findByEmail(identifier);
+        User userByUsername = uRepo.findByUsername(identifier);
+        User user = userByEmail == null ? userByUsername : userByEmail;
+        if(user.getPassword() == password){
+            return true;
         }
-            return localAList;
+        return false;
     }
 }
 

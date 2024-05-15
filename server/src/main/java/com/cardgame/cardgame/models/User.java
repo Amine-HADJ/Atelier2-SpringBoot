@@ -54,6 +54,6 @@ public class User {
     }
 
     public void setWallet(double wallet) {
-        this.wallet = wallet;
+        this.wallet = this.wallet + wallet;
     }
 }

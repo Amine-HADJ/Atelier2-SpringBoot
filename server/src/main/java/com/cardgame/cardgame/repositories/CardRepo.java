@@ -8,9 +8,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CardRepo extends CrudRepository<Card, Integer> {
-    // Add custom query methods here if needed
     List<Card> findByFamilyName(String familyName);
-
+    List<Card> findAll();
 }
 
 

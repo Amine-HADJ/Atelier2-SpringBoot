@@ -64,18 +64,4 @@ public class MarketService {
             inventoryRepo.findById(userId).get().getCards().remove(card);
 
         }
-
-
-
-   
-            
-
     }
-
-
-    
-
-    
-
-
-
