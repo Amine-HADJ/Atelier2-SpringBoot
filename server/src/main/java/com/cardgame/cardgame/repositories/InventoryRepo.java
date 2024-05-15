@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InventoryRepo extends CrudRepository<Inventory, Integer> {
+    
     List<Inventory> findAll();
 
 }
