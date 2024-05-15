@@ -1,7 +1,10 @@
 package com.cardgame.cardgame.controllers;
 
+import com.cardgame.cardgame.models.Inventory;
 import com.cardgame.cardgame.models.User;
 import com.cardgame.cardgame.services.UserService;
+
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,5 +30,15 @@ public class UserController {
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
+    }
+
+    @PostMapping("/getuserdetails")
+    public Map<String, Object> details(@RequestBody Integer userId) {
+        return uService.getUsersDetails(userId);
+    }
+
+    @PostMapping("/getinventory")
+    public Inventory inventory(@RequestBody Integer userId) {
+        return uService.getInventory(userId);
     }
 }

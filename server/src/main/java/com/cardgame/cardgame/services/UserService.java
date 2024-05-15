@@ -1,6 +1,7 @@
 package com.cardgame.cardgame.services;
 
 import com.cardgame.cardgame.models.Card;
+import com.cardgame.cardgame.models.DataFormatter;
 import com.cardgame.cardgame.models.Inventory;
 import com.cardgame.cardgame.models.User;
 import com.cardgame.cardgame.repositories.InventoryRepo;
@@ -8,6 +9,7 @@ import com.cardgame.cardgame.repositories.UserRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserService {
@@ -36,5 +38,18 @@ public class UserService {
         inventoryRepo.save(inventory);
 
         return savedUser;
+    }
+
+    public Map<String, Object> getUsersDetails(Integer userId) {
+        String username = userRepo.findById(userId).get().getUsername();
+        Double userMoney = userRepo.findById(userId).get().getWallet();
+        Map<String, Object> userDetails = DataFormatter.formatUsersDetails(username, userMoney);
+
+        return userDetails;
+    }
+
+    public Inventory getInventory(Integer userId) {
+        Inventory inventory = inventoryRepo.findByUserId(userId);
+        return inventory;
     }
 }
