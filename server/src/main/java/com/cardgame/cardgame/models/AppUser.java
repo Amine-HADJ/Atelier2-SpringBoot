@@ -1,11 +1,14 @@
 package com.cardgame.cardgame.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
-public class User {
+public class AppUser implements java.io.Serializable{
     @Id
     @GeneratedValue
     private Integer id;
@@ -14,7 +17,13 @@ public class User {
     private String email;
     private double wallet;
 
-    public User(String username, String email, String password) {
+    // @OneToOne(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "inventory_id", referencedColumnName = "id")
+    private Inventory inventory;
+
+    public AppUser() {}
+
+    public AppUser(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -55,5 +64,13 @@ public class User {
 
     public void setWallet(double wallet) {
         this.wallet = this.wallet + wallet;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 }

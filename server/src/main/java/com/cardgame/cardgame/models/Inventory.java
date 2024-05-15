@@ -1,21 +1,22 @@
 package com.cardgame.cardgame.models;
 
+import jakarta.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-
-
-
 @Entity
-public class Inventory {
+public class Inventory implements java.io.Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private Integer userId;
-    private List<Card> cards;
-    
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "inventory_id")
+    private List<Card> cards = new ArrayList<>();
+
+    public Inventory() {}
 
     public Inventory(Integer userId, List<Card> cards) {
         this.userId = userId;
@@ -26,8 +27,16 @@ public class Inventory {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getUserId() {
         return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public List<Card> getCards() {
@@ -41,8 +50,4 @@ public class Inventory {
     public void addCard(Card card) {
         this.cards.add(card);
     }
-
-    
-  
-
 }

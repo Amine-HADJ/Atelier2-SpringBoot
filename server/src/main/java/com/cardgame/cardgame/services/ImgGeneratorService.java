@@ -14,7 +14,11 @@ public class ImgGeneratorService {
     @Value("${api.token}")
     private String token;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
+
+    public ImgGeneratorService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     public String requestImageGeneration(String prompt) {
         String url = "/img-service/prompt/req";

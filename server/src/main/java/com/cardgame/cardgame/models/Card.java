@@ -3,39 +3,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Card {
+public class Card implements java.io.Serializable{
     @Id
     private Integer id;
-   /*  
-    @Column(nullable = true, length = 50)
-    private String familyName;
+   
     
-    @Column(nullable = true, length = 255)
-    private String imgSrc;
-    
-    @Column(nullable = false, length = 50)
-    private String name;
-    
-    @Column(nullable = true, length = 255)
-    private String description;
-    
-    @Column(nullable = false)
-    private int hp;
-    
-    @Column(nullable = false)
-    private int energy;
-    
-    @Column(nullable = false)
-    private int attack;
-    
-    @Column(nullable = false)
-    private int defense;
-    
-    @Column(nullable = false)
-    private double price;
-*/
-
-
     private String familyName;
     
     private String imgSrc;

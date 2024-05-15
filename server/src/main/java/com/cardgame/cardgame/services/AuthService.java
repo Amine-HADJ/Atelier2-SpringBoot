@@ -1,6 +1,6 @@
 package com.cardgame.cardgame.services;
 
-import com.cardgame.cardgame.models.User;
+import com.cardgame.cardgame.models.AppUser;
 import com.cardgame.cardgame.repositories.UserRepo;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +14,9 @@ public class AuthService {
     }
 
     public boolean checkLogin(String identifier, String password){
-        User userByEmail = uRepo.findByEmail(identifier);
-        User userByUsername = uRepo.findByUsername(identifier);
-        User user = userByEmail == null ? userByUsername : userByEmail;
+        AppUser userByEmail = uRepo.findByEmail(identifier);
+        AppUser userByUsername = uRepo.findByUsername(identifier);
+        AppUser user = userByEmail == null ? userByUsername : userByEmail;
         if(user.getPassword() == password){
             return true;
         }

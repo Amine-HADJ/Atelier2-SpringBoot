@@ -1,10 +1,12 @@
 package com.cardgame.cardgame.repositories;
 
-import com.cardgame.cardgame.models.User;
-import org.springframework.data.repository.CrudRepository;
+import com.cardgame.cardgame.models.AppUser;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepo extends CrudRepository<User,Integer> {
-    User findByEmail(String email);
-    User findByUsername(String username);
+@Repository
+public interface UserRepo extends JpaRepository<AppUser,Integer> {
+    AppUser findByEmail(String email);
+    AppUser findByUsername(String username);
 }
