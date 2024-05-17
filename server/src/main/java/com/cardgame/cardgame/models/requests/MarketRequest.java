@@ -1,5 +1,4 @@
 package com.cardgame.cardgame.models.requests;
-import com.cardgame.cardgame.models.Card;
 
 public class MarketRequest {
     private String userId;

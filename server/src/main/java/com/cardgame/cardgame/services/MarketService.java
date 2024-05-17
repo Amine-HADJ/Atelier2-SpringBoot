@@ -26,26 +26,24 @@ public class MarketService {
 
     public void buyCard(Integer userId, int cardId) {
 
-        // //Check if the card is available
-        // if (cardRepo.findById(card.getId()).isEmpty()){
-        //     System.out.println("Card not available");
-        //     return;
-        // }
+        Inventory userInventoy = inventoryRepo.findById(userId).get();
+        List<Card> useCards = userInventoy.getCards();
         
-        // //Check if the user has enough money
-        // if (userRepo.findById(userId).get().getWallet() < card.getPrice()){
-        //     System.out.println("Not enough money");
-        //     return;
-        // }
+        // Check if the user has the card
+        if (useCards.contains(cardRepo.findById(cardId).get())) {
+            System.out.println("User already has the card");
+            return;
+        }
+        
+        userRepo.findById(userId).get().setWallet( -cardRepo.findById(cardId).get().getPrice());
 
-        // //Add card to user inventory
-        // inventoryRepo.findById(userId).get().addCard(card);
+        // on save le wallet dans la database
+        userRepo.save(userRepo.findById(userId).get());
 
-        // //Update user wallet
-        // userRepo.findById(userId).get().setWallet( -card.getPrice() );
-
-        // //Remove card from cardRepo
-        // cardRepo.deleteById(card.getId());
+        // on supprime la carte de l'inventaire
+        useCards.add(cardRepo.findById(cardId).get());
+        userInventoy.setCards(useCards);
+        inventoryRepo.save(userInventoy);
 
         }
 
@@ -61,15 +59,13 @@ public class MarketService {
             System.out.println("User has the card");
             userRepo.findById(userId).get().setWallet(cardRepo.findById(cardId).get().getPrice());
 
-            // on save le wallet dans la database 
+            // on save le wallet dans la database
             userRepo.save(userRepo.findById(userId).get());
 
-
-            System.out.println(cardRepo.findById(cardId).get().getPrice());
-
-           
-            
-            
+            // on supprime la carte de l'inventaire
+            useCards.remove(cardRepo.findById(cardId).get());
+            userInventoy.setCards(useCards);
+            inventoryRepo.save(userInventoy);
         }
 
     public List<Card> getCards() {
