@@ -11,5 +11,4 @@ public interface InventoryRepo extends JpaRepository<Inventory, Integer> {
     
     @SuppressWarnings("null")
     List<Inventory> findAll();
-    Inventory findByUserId(Integer userId);
 }

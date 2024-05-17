@@ -10,16 +10,13 @@ public class Inventory implements java.io.Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer userId;
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "inventory_id")
     private List<Card> cards = new ArrayList<>();
 
     public Inventory() {}
 
-    public Inventory(Integer userId, List<Card> cards) {
-        this.userId = userId;
+    public Inventory(List<Card> cards) {
         this.cards = cards;
     }
 
@@ -30,15 +27,7 @@ public class Inventory implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
+    
     public List<Card> getCards() {
         return cards;
     }

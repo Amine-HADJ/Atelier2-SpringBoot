@@ -36,12 +36,12 @@ public class UserService{
     public Integer registerUser(AppUser user) {
         AppUser newUser = new AppUser(user.getUsername(), user.getEmail(), user.getPassword());
         List<Card> cards = cardService.generateCards();
-        AppUser savedUser = userRepo.save(newUser);
-        Inventory inventory = new Inventory(newUser.getId(), cards);
+        Inventory inventory = new Inventory(cards);
         newUser.setInventory(inventory);
         inventoryRepo.save(inventory);
+        AppUser savedUser = userRepo.save(newUser);
 
-        return newUser.getId();
+        return savedUser.getId();
     }
 
     public Map<String, Object> getUsersDetails(String userId) {
@@ -57,8 +57,10 @@ public class UserService{
         return null;
     }
 
+    /* 
     public Inventory getInventory(Integer userId) {
-        Inventory inventory = inventoryRepo.findByUserId(userId);
+        Inventory inventory = inventoryRepo.findById(userId.get);
         return inventory;
     }
+    */
 }

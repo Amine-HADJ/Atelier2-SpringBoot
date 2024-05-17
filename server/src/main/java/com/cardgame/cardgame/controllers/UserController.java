@@ -44,9 +44,11 @@ public class UserController {
         return uService.getUsersDetails(userId);
     }
 
+    /* 
     @PostMapping("/getinventory")
     @CrossOrigin(origins = "*")
     public Inventory inventory(@RequestBody Integer userId) {
         return uService.getInventory(userId);
     }
+    */
 }
