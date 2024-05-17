@@ -13,23 +13,22 @@ public class CardService {
 
     private final CardRepo cardRepo;
     private final ImgGeneratorService imgGeneratorService;
-    //private final PromptGeneratorService promptGeneratorService;
+    private final PromptGeneratorService promptGeneratorService;
 
 
     public CardService(CardRepo cardRepo, ImgGeneratorService imgGeneratorService, PromptGeneratorService promptGeneratorService) {
         this.cardRepo = cardRepo;
         this.imgGeneratorService = imgGeneratorService;
-        //this.promptGeneratorService = promptGeneratorService;
+        this.promptGeneratorService = promptGeneratorService;
     }
 
     public String createCard(String prompt) {
-        //String promptResponse = promptGeneratorService.requestPromptGeneration(prompt);
+        String promptResponse = promptGeneratorService.requestPromptGeneration(prompt);
         // Process the prompt response if needed
         String imageRequestId = imgGeneratorService.requestImageGeneration(prompt);
         // Process the image request response if needed
         return imageRequestId;
     }
-
 
     public List<Card> generateCards() {
         List<Card> cards = new ArrayList<>();
@@ -40,7 +39,11 @@ public class CardService {
         return cards;
     }
 
-    
+    public void addAllCards(List<Card> cards) {
+        for(Card card : cards){
+            cardRepo.save(card);
+        }
+    }
 }
 
 

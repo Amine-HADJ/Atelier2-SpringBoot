@@ -10,10 +10,12 @@ public class Card implements java.io.Serializable{
     
     private String familyName;
     
+    @jakarta.persistence.Column(length = 1000)
     private String imgSrc;
     
     private String name;
-    
+
+    @jakarta.persistence.Column(length = 1000)
     private String description;
     
     private int hp;

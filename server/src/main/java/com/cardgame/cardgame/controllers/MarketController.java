@@ -2,10 +2,12 @@ package com.cardgame.cardgame.controllers;
 
 import com.cardgame.cardgame.models.Card;
 import com.cardgame.cardgame.models.requests.MarketRequest;
+import com.cardgame.cardgame.services.CardService;
 import com.cardgame.cardgame.services.MarketService;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,9 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class MarketController {
 
     private final MarketService mService;
+    private final CardService cService;
 
-    public MarketController(MarketService mService) {
+    public MarketController(MarketService mService, CardService cService) {
         this.mService = mService;
+        this.cService = cService;
     }
 
     @PostMapping("/buycard")
@@ -36,7 +40,15 @@ public class MarketController {
     }
     
     @GetMapping("/getmarket")
+    @CrossOrigin(origins = "*")
     public List<Card> market() {
         return mService.getCards();
+    }
+
+    @PostMapping("/generateCards")
+    @CrossOrigin(origins = "*")
+    public ResponseEntity<String> generateCards(@RequestBody List<Card> cards) {
+        cService.addAllCards(cards);
+        return ResponseEntity.ok("Cards added");
     }
 }

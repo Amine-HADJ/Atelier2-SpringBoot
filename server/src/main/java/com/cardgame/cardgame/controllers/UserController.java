@@ -29,8 +29,8 @@ public class UserController {
     public ResponseEntity<String> register(@RequestBody AppUser user) {
         boolean exists = uService.checkIfUserExists(user.getUsername(), user.getEmail());
         if (!exists) {
-            uService.registerUser(user);
-            return ResponseEntity.ok("User registered successfully");
+            Integer userId = uService.registerUser(user);
+            return ResponseEntity.ok(userId.toString());
         } else {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body("User with the provided username or email already exists");

@@ -19,8 +19,8 @@ async function process(elt){
            console.log("User already exists")
            return
         }
-        userId = response.json();
-        localStorage.setItem("userId", userId);
+        data = response.text();
+        localStorage.setItem("userId", Number(data));
     });
 }
 

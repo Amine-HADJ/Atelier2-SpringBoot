@@ -33,14 +33,14 @@ public class UserService{
         return byEmail || byUsername;
     }
 
-    public AppUser registerUser(AppUser user) {
+    public Integer registerUser(AppUser user) {
         AppUser newUser = new AppUser(user.getUsername(), user.getEmail(), user.getPassword());
         AppUser savedUser = userRepo.save(newUser);
         List<Card> cards = cardService.generateCards();
         Inventory inventory = new Inventory(savedUser.getId(), cards);
         inventoryRepo.save(inventory);
 
-        return savedUser;
+        return newUser.getId();
     }
 
     public Map<String, Object> getUsersDetails(Integer userId) {
