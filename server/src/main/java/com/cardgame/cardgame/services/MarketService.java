@@ -50,15 +50,25 @@ public class MarketService {
         }
 
     public void sellCard(Integer userId, int cardId) {
-            System.out.println(cardId + "carteId");
             Inventory userInventoy = inventoryRepo.findById(userId).get();
             List<Card> useCards = userInventoy.getCards();
-            if (!useCards.contains(cardId)){
-                System.out.println("Cards not in inventory");
+            
+            // Check if the user has the card
+            if (!useCards.contains(cardRepo.findById(cardId).get())) {
+                System.out.println("User does not have the card");
                 return;
             }
+            System.out.println("User has the card");
+            userRepo.findById(userId).get().setWallet(cardRepo.findById(cardId).get().getPrice());
+
+            // on save le wallet dans la database 
+            userRepo.save(userRepo.findById(userId).get());
+
+
+            System.out.println(cardRepo.findById(cardId).get().getPrice());
+
+           
             
-            // userRepo.findById(userId).get().setWallet( cardId.getPrice());
             
         }
 
