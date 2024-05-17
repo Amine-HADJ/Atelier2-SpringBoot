@@ -1,5 +1,9 @@
 package com.cardgame.cardgame.services;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -10,6 +14,20 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class PromptGeneratorService {
+
+    // liste de 10 prompts pour générer des descriptions
+    List<String> prompts = new ArrayList<String>(Arrays.asList(
+        "short description for a beautiful sunset over the ocean",
+        "short description for a cat with a hat",
+        "short description for a dog playing with a ball",
+        "short description for a dragon flying over a castle",
+        "short description for a forest with a river",
+        "short description for a house in the mountains",
+        "short description for a lion in the savannah",
+        "short description for a robot in a city",
+        "short description for a spaceship in space",
+        "short description for an unicorn in a field"
+    ));
 
     @Value("${api.token}")
     private String token;
@@ -30,8 +48,18 @@ public class PromptGeneratorService {
 
     public String getPromptGenerationStatus(String requestId) {
         String url = "tp.cpe.fr:8088/llm-service/prompt/req/" + requestId;
-        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity("responsePromptText", String.class);
 
         return response.getBody();
     }
+
+    public List<String> generateAllPrompts() {
+        List<String> promptDescriptions = new ArrayList<>();
+        for (String prompt : prompts) {
+            String promptId = requestPromptGeneration(prompt);
+            promptDescriptions.add(promptId);
+        }
+        return promptDescriptions;
+    }
+
 }
