@@ -20,7 +20,7 @@ public class UserController {
     
     private final UserService uService;
 
-  
+    
     public UserController(UserService uService) {
         this.uService = uService;
     }

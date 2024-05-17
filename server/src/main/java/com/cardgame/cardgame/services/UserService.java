@@ -58,7 +58,9 @@ public class UserService{
     }
     
     public Optional<Inventory> getInventory(String userId) {
+        userId = userId.substring(1, userId.length() - 1);
         Integer userIdInt = Integer.parseInt(userId);
+        System.out.println(userIdInt);
         Optional<Inventory> inventory = inventoryRepo.findById(userIdInt);
         return inventory;
     }
