@@ -7,6 +7,16 @@ function setUserInfo(){
 
 
 document.addEventListener("DOMContentLoaded", async () => {
+    cards = await fetch("../json/cardMarket.json").then((response) => response.json());
+    
+    await fetch("http://localhost:8080/generateCards", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(cards)
+    }).then((response) => console.log(response.text()));
+    /*
     user = await fetch("http://localhost:8080/getuserdetails", {
         method: "POST",
         headers: {
@@ -17,6 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         })
     }).then((response) => response.json());
     setUserInfo();
+    */
 });
 
 
