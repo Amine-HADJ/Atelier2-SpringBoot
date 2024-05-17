@@ -30,11 +30,12 @@ public class UserService{
         boolean byEmail = userRepo.findByEmail(email) != null;
         boolean byUsername = userRepo.findByUsername(username) != null;
 
-        return byEmail && byUsername;
+        return byEmail || byUsername;
     }
 
     public AppUser registerUser(AppUser user) {
-        AppUser savedUser = userRepo.save(user);
+        AppUser newUser = new AppUser(user.getUsername(), user.getEmail(), user.getPassword());
+        AppUser savedUser = userRepo.save(newUser);
         List<Card> cards = cardService.generateCards();
         Inventory inventory = new Inventory(savedUser.getId(), cards);
         inventoryRepo.save(inventory);

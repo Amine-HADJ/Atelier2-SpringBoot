@@ -6,6 +6,7 @@ import com.cardgame.cardgame.services.MarketService;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,12 +23,14 @@ public class MarketController {
     }
 
     @PostMapping("/buycard")
+    @CrossOrigin(origins = "*")
     public void buyCard(@RequestBody MarketRequest req) {
         mService.buyCard(req.getUserId(), req.getCard());
     }
 
 
     @PostMapping("/sellcard")
+    @CrossOrigin(origins = "*")
     public void sellCard(@RequestBody MarketRequest req) {
         mService.sellCard(req.getUserId(), req.getCard());
     }
