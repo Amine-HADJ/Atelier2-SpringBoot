@@ -30,7 +30,8 @@ public class UserController {
         boolean exists = uService.checkIfUserExists(user.getUsername(), user.getEmail());
         if (!exists) {
             Integer userId = uService.registerUser(user);
-            return ResponseEntity.ok(userId.toString());
+            String userIdStr = userId.toString();
+            return ResponseEntity.ok(userIdStr);
         } else {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body("User with the provided username or email already exists");
@@ -39,7 +40,7 @@ public class UserController {
 
     @PostMapping("/getuserdetails")
     @CrossOrigin(origins = "*")
-    public Map<String, Object> details(@RequestBody Integer userId) {
+    public Map<String, Object> details(@RequestBody String userId) {
         return uService.getUsersDetails(userId);
     }
 

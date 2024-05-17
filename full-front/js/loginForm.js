@@ -13,12 +13,12 @@ async function process(elt){
             "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
-    }).then((response) => {
+    }).then(async (response) => {
         if(!response.ok){
            console.log("Incorrect password")
            return
         }
-        userId = response.json();
+        userId = await response.text();
         console.log("Logged in")
         localStorage.setItem("userId", userId);
     });

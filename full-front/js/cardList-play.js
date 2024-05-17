@@ -21,7 +21,7 @@ function setGame(userCardId){
 
 function setUserInfo(){
     document.getElementById("userNameId").innerHTML= user.username;
-    document.getElementById("walletId").innerHTML= user.wallet;
+    document.getElementById("walletId").innerHTML= user.money;
 }
 
 const queryString = window.location.search;
@@ -34,9 +34,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            userId: localStorage.getItem("userId")
-        })
+        body: localStorage.getItem("userId")
     }).then((response) => response.json());
     cardList = await fetch("http://localhost:8080/getinventory", {
         method: "POST",

@@ -13,14 +13,14 @@ public class AuthService {
         this.uRepo = uRepo;   
     }
 
-    public boolean checkLogin(String identifier, String password){
+    public Integer checkLogin(String identifier, String password){
         AppUser userByEmail = uRepo.findByEmail(identifier);
         AppUser userByUsername = uRepo.findByUsername(identifier);
         AppUser user = userByEmail == null ? userByUsername : userByEmail;
-        if(user.getPassword() == password){
-            return true;
+        if(password.equals(user.getPassword())){
+            return user.getId();
         }
-        return false;
+        return -1;
     }
 }
 

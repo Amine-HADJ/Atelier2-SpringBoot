@@ -14,13 +14,13 @@ async function process(elt){
             "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
-    }).then((response) => {
+    }).then(async (response) => {
         if(!response.ok){
            console.log("User already exists")
            return
         }
-        data = response.text();
-        localStorage.setItem("userId", Number(data));
+        data = await response.text();
+        localStorage.setItem("userId", data);
     });
 }
 

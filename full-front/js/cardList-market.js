@@ -51,7 +51,7 @@ function setCardlist(){
 
 function setUserInfo(){
     document.getElementById("userNameId").innerHTML= user.username;
-    document.getElementById("walletId").innerHTML= user.wallet;
+    document.getElementById("walletId").innerHTML= user.money;
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -60,16 +60,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            userId: localStorage.getItem("userId")
-        })
+        body: localStorage.getItem("userId")
     }).then((response) => response.json());
+    /*
     cardList = await fetch("http://localhost:8080/getmarket", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
         },
     }).then((response) => response.json());
+    */
     setUserInfo();
     setCardlist();
 });

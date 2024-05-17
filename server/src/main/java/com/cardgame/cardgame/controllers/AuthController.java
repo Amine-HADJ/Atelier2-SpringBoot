@@ -21,9 +21,9 @@ public class AuthController {
     @PostMapping("/login")
     @CrossOrigin(origins = "*")
     public ResponseEntity<String> login(@RequestBody LoginRequest req) {
-        boolean check = authService.checkLogin(req.getUsernameOrEmail(), req.getPassword());
-        if (check) {
-            return ResponseEntity.ok("success");
+        Integer check = authService.checkLogin(req.getUsernameOrEmail(), req.getPassword());
+        if (check > -1) {
+            return ResponseEntity.ok(check.toString());
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }

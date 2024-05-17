@@ -39,12 +39,14 @@ public class UserService{
         List<Card> cards = cardService.generateCards();
         Inventory inventory = new Inventory(savedUser.getId(), cards);
         inventoryRepo.save(inventory);
-
-        return newUser.getId();
+        
+        return savedUser.getId();
     }
 
-    public Map<String, Object> getUsersDetails(Integer userId) {
-        java.util.Optional<AppUser> userOptional = userRepo.findById(userId);
+    public Map<String, Object> getUsersDetails(String userId) {
+        Integer userIdInt = Integer.parseInt(userId);
+        java.util.Optional<AppUser> userOptional = userRepo.findById(userIdInt);
+        System.out.println(userId);
         if (userOptional.isPresent()) {
             AppUser user = userOptional.get();
             String username = user.getUsername();
