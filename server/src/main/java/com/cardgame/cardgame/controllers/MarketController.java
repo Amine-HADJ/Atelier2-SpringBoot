@@ -29,14 +29,14 @@ public class MarketController {
     @PostMapping("/buycard")
     @CrossOrigin(origins = "*")
     public void buyCard(@RequestBody MarketRequest req) {
-        mService.buyCard(req.getUserId(), req.getCard());
+        mService.buyCard(req.getUserId(), req.getCardId());
     }
 
 
     @PostMapping("/sellcard")
     @CrossOrigin(origins = "*")
     public void sellCard(@RequestBody MarketRequest req) {
-        mService.sellCard(req.getUserId(), req.getCard());
+        mService.sellCard(req.getUserId(), req.getCardId());
     }
     
     @GetMapping("/getmarket")

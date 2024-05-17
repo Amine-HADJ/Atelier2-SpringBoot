@@ -27,6 +27,7 @@ public class Card implements java.io.Serializable{
     private int defense;
     
     private double price;
+
     // Default constructor is required for JPA
     public Card() {}
 
@@ -40,6 +41,7 @@ public class Card implements java.io.Serializable{
         this.attack = attack;
         this.defense = defense;
         this.price = price;
+        
     }
     public Integer getId() {
         return id;
@@ -120,4 +122,6 @@ public class Card implements java.io.Serializable{
     public void setPrice(int price) {
         this.price = price;
     }
+
+  
 }

@@ -38,6 +38,7 @@ public class UserService{
         AppUser newUser = new AppUser(user.getUsername(), user.getEmail(), user.getPassword());
         List<Card> cards = cardService.generateCards();
         Inventory inventory = new Inventory(cards);
+        inventory.setCards(cards);
         newUser.setInventory(inventory);
         inventoryRepo.save(inventory);
         AppUser savedUser = userRepo.save(newUser);

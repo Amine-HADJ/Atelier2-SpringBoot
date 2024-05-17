@@ -3,11 +3,11 @@ import com.cardgame.cardgame.models.Card;
 
 public class MarketRequest {
     private String userId;
-    private Card card;
+    private int cardId;
 
-    public MarketRequest(String userId, Card card) {
+    public MarketRequest(String userId, int cardId) {
         this.userId = userId;
-        this.card = card;
+        this.cardId = cardId;
     }
 
     public Integer getUserId() {
@@ -15,9 +15,11 @@ public class MarketRequest {
         return userId;
     }
 
-    public Card getCard() {
-        return card;
+    public int getCardId() {
+        return cardId;
     }
+
+    
 }
 
 
