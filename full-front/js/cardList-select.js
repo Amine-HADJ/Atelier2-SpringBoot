@@ -18,8 +18,24 @@ function setUserInfo(){
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-    user = await fetch("../json/users.json").then((response) => response.json());
-    cardList = await fetch("../json/cardList.json").then((response) => response.json());
+    user = await fetch("http://localhost:8080/getuserdetails", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            userId: localStorage.getItem("userId")
+        })
+    }).then((response) => response.json());
+    cardList = await fetch("http://localhost:8080/getinventory", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            userId: localStorage.getItem("userId")
+        })
+    }).then((response) => response.json());
     setUserInfo();
     setCardlist();
 });
