@@ -15,6 +15,13 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class ImgGeneratorService {
 
+    public ImgGeneratorService() {
+        this.restTemplate = new RestTemplate();
+        
+    }
+
+    
+
     // liste de 10 prompts pour générer des images
     List<String> prompts = new ArrayList<String>(Arrays.asList(
         "A beautiful sunset over the ocean",

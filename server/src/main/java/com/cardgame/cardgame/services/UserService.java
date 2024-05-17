@@ -35,12 +35,13 @@ public class UserService{
 
     public Integer registerUser(AppUser user) {
         AppUser newUser = new AppUser(user.getUsername(), user.getEmail(), user.getPassword());
-        AppUser savedUser = userRepo.save(newUser);
         List<Card> cards = cardService.generateCards();
-        Inventory inventory = new Inventory(savedUser.getId(), cards);
+        AppUser savedUser = userRepo.save(newUser);
+        Inventory inventory = new Inventory(newUser.getId(), cards);
+        newUser.setInventory(inventory);
         inventoryRepo.save(inventory);
-        
-        return savedUser.getId();
+
+        return newUser.getId();
     }
 
     public Map<String, Object> getUsersDetails(String userId) {

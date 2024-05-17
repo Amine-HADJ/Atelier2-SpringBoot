@@ -15,6 +15,8 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class PromptGeneratorService {
 
+    public PromptGeneratorService() {}
+
     // liste de 10 prompts pour générer des descriptions
     List<String> prompts = new ArrayList<String>(Arrays.asList(
         "short description for a beautiful sunset over the ocean",

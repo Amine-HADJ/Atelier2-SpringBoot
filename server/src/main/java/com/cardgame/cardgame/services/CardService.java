@@ -62,7 +62,7 @@ public class CardService {
 
     public List<Card> generateCards() {
         List<Card> cards = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 1; i < 6; i++) {
             int length = (int) cardRepo.count();
             cards.add(cardRepo.findById((int) (Math.random() * length) + 1).get());
         }

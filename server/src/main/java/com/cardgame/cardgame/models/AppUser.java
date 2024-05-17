@@ -1,8 +1,10 @@
 package com.cardgame.cardgame.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class AppUser implements java.io.Serializable{
@@ -14,7 +16,7 @@ public class AppUser implements java.io.Serializable{
     private String email;
     private double wallet;
 
-    // @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     // @JoinColumn(name = "inventory_id", referencedColumnName = "id")
     private Inventory inventory;
 
