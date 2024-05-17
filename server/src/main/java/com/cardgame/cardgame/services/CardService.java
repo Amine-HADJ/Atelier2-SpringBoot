@@ -69,6 +69,11 @@ public class CardService {
         return cards;
     }
 
+    public void generateAllCards(List<Card> cards) {
+        for(Card card : cards) {
+            cardRepo.save(card);
+        }
+    }
 
 
 }

@@ -20,9 +20,9 @@ function setTemplate(idTemplate,idContainer,cList){
         let clone = document.importNode(template.content, true);
 
         newContent= clone.firstElementChild.innerHTML
-                    .replace(/{{family_src}}/g, card.family_src)
-                    .replace(/{{family_name}}/g, card.family_name)
-                    .replace(/{{img_src}}/g, card.img_src)
+                    .replace(/{{family_src}}/g, card.familySrc)
+                    .replace(/{{family_name}}/g, card.familyName)
+                    .replace(/{{img_src}}/g, card.imgSrc)
                     .replace(/{{name}}/g, card.name)
                     .replace(/{{description}}/g, card.description)
                     .replace(/{{hp}}/g, card.hp)

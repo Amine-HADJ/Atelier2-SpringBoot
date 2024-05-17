@@ -18,7 +18,11 @@ public class MarketService {
     private InventoryRepo inventoryRepo;
     private UserRepo userRepo;
 
-
+    public MarketService(CardRepo cardRepo, InventoryRepo inventoryRepo, UserRepo userRepo) {
+        this.cardRepo = cardRepo;   
+        this.inventoryRepo = inventoryRepo;   
+        this.userRepo = userRepo;
+    }
 
     public void buyCard(Integer userId, Card card) {
 
@@ -45,7 +49,7 @@ public class MarketService {
 
         }
 
-        public void sellCard(Integer userId, Card card) {
+    public void sellCard(Integer userId, Card card) {
 
             //Check if the card is in the user inventory
             if (inventoryRepo.findById(userId).get().getCards().contains(card)){
@@ -64,8 +68,8 @@ public class MarketService {
 
         }
 
-        public List<Card> getCards() {
-            return cardRepo.findAll();
-        }
-
+    public List<Card> getCards() {
+        return cardRepo.findAll();
     }
+
+}

@@ -35,7 +35,7 @@ public class PromptGeneratorService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public String requestPromptGeneration(String prompt) {
-        String url = "tp.cpe.fr:8088/llm-service/prompt/req";
+        String url = "https://tp.cpe.fr:8088/llm-service/prompt/req";
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", token);
         String body = "{ \"promptTxt\": \"" + prompt + "\" }";
@@ -47,8 +47,8 @@ public class PromptGeneratorService {
     }
 
     public String getPromptGenerationStatus(String requestId) {
-        String url = "tp.cpe.fr:8088/llm-service/prompt/req/" + requestId;
-        ResponseEntity<String> response = restTemplate.getForEntity("responsePromptText", String.class);
+        String url = "https://tp.cpe.fr:8088/llm-service/prompt/req/" + requestId;
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
         return response.getBody();
     }
