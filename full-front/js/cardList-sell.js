@@ -2,7 +2,6 @@ let user;
 let cardList;
 
 async function sellCard(id){
-    console.log(id)
     await fetch("http://localhost:8080/sellcard", {
         method: "POST",
         headers: {
@@ -17,29 +16,8 @@ async function sellCard(id){
             console.log("Couldn't sell card");
             return
         }
-        console.log("Card sold")
-        window.location.href = "cardList-market-sell.html";
-    });
-}
-
-async function buyCard(id){
-    console.log(id)
-    await fetch("http://localhost:8080/buyCard", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            userId: localStorage.getItem("userId"),
-            cardId: id,
-        })
-    }).then((response) => {
-        if(!response.ok){
-            console.log("Couldn't buy card");
-            return
-        }
-        console.log("Card bought")
-        window.location.href = "cardList-market-sell.html";
+        console.log("Card sold");
+        //window.location.href = "cardList-market-sell.html";
     });
 }
 
@@ -68,11 +46,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         setUserInfo();
     }
     
-    cardList = await fetch("http://localhost:8080/getmarket", {
-        method: "GET",
+    cardList = await fetch("http://localhost:8080/getinventory", {
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-    }).then((response) => response.json());
+        body: JSON.stringify(localStorage.getItem("userId"))
+    }).then(async (response) => { 
+        const data = await response.json();
+        return data.cards;
+    });
     setCardlist();
 });

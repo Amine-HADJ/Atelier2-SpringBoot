@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class UserService{
@@ -46,8 +47,7 @@ public class UserService{
 
     public Map<String, Object> getUsersDetails(String userId) {
         Integer userIdInt = Integer.parseInt(userId);
-        java.util.Optional<AppUser> userOptional = userRepo.findById(userIdInt);
-        System.out.println(userId);
+        Optional<AppUser> userOptional = userRepo.findById(userIdInt);
         if (userOptional.isPresent()) {
             AppUser user = userOptional.get();
             String username = user.getUsername();
@@ -56,11 +56,10 @@ public class UserService{
         }
         return null;
     }
-
-    /* 
-    public Inventory getInventory(Integer userId) {
-        Inventory inventory = inventoryRepo.findById(userId.get);
+    
+    public Optional<Inventory> getInventory(String userId) {
+        Integer userIdInt = Integer.parseInt(userId);
+        Optional<Inventory> inventory = inventoryRepo.findById(userIdInt);
         return inventory;
     }
-    */
 }

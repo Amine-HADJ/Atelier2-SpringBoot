@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(cards)
-    }).then((response) => console.log(response.text()));
+    }).then(async (response) => console.log(await response.text()));
     
     const id = localStorage.getItem("userId");
     if(id){

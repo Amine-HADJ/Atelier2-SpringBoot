@@ -5,6 +5,7 @@ import com.cardgame.cardgame.models.AppUser;
 import com.cardgame.cardgame.services.UserService;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,11 +45,9 @@ public class UserController {
         return uService.getUsersDetails(userId);
     }
 
-    /* 
     @PostMapping("/getinventory")
     @CrossOrigin(origins = "*")
-    public Inventory inventory(@RequestBody Integer userId) {
+    public Optional<Inventory> inventory(@RequestBody String userId) {
         return uService.getInventory(userId);
     }
-    */
 }

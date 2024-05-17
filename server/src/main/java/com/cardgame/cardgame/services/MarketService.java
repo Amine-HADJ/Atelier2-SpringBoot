@@ -52,7 +52,7 @@ public class MarketService {
     public void sellCard(Integer userId, Card card) {
 
             //Check if the card is in the user inventory
-            if (inventoryRepo.findById(userId).get().getCards().contains(card)){
+            if (!inventoryRepo.findById(userId).get().getCards().contains(card)){
                 System.out.println("Card not in inventory");
                 return;
             }
@@ -61,7 +61,7 @@ public class MarketService {
             cardRepo.save(card);
 
             //Update user wallet
-            userRepo.findById(userId).get().setWallet(card.getPrice() );
+            userRepo.findById(userId).get().setWallet(card.getPrice());
 
             //Remove card from user inventory
             inventoryRepo.findById(userId).get().getCards().remove(card);
