@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 "Content-Type": "application/json"
             },
             body: localStorage.getItem("userId")
-        }).then((response) => response.json());
-
-        setUserInfo();
+        }).then((response) => response.json())
+        .then(() => setUserInfo)
+        .catch(error => authLinks.style.display = "block");
     }
 });
