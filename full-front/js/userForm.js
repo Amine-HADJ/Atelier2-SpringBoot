@@ -1,13 +1,22 @@
+var checked = false;
+
 async function process(elt){
-    
-    let firstName = document.getElementsByName('first-name');
-    let lastName = document.getElementsByName('last-name');
+    let username = document.getElementsByName('username');
+    let email = document.getElementsByName('email');
     let password = document.getElementsByName('password');
     let rePassword = document.getElementsByName('re-password');
 
-    data = { "username": firstName[0].value, "email": lastName[0].value, "password": password[0].value }
-    console.log(data);
+    data = { "username": username[0].value, "email": email[0].value, "password": password[0].value }
 
+    if(rePassword[0].value != password[0].value){
+        alert("Passwords do not match");
+        return
+    }
+    if(!checked){
+        alert("Please accept the terms");
+        return
+    }
+    
     await fetch("http://localhost:8080/register", {
         method: "POST",
         headers: {
@@ -16,14 +25,15 @@ async function process(elt){
         body: JSON.stringify(data)
     }).then(async (response) => {
         if(!response.ok){
-           console.log("User already exists")
+           alert("User already exists")
            return
         }
         data = await response.text();
         localStorage.setItem("userId", data);
+        window.location.href = "home.html";
     });
 }
 
-function check(input){
-    console.log("checked");
+function check(event){
+    checked = !checked;
 }

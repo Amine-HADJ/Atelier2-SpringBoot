@@ -5,7 +5,11 @@ async function process(elt){
     
 
     data = { "usernameOrEmail": login[0].value, "password": password[0].value }
-    console.log(data);
+
+    if(data.usernameOrEmail == "" || data.password == ""){
+        alert("Empty fields")
+        return
+    }
 
     await fetch("http://localhost:8080/login", {
         method: "POST",
@@ -15,11 +19,11 @@ async function process(elt){
         body: JSON.stringify(data)
     }).then(async (response) => {
         if(!response.ok){
-           console.log("Incorrect password")
+           alert("Incorrect password")
            return
         }
         userId = await response.text();
-        console.log("Logged in")
         localStorage.setItem("userId", userId);
+        window.location.href = "home.html";
     });
 }

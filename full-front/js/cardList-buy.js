@@ -1,8 +1,7 @@
-let user;
 let cardList;
 
 async function buyCard(id){
-    await fetch("http://localhost:8080/buyCard", {
+    await fetch("http://localhost:8080/buycard", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -13,11 +12,10 @@ async function buyCard(id){
         })
     }).then((response) => {
         if(!response.ok){
-            console.log("Couldn't buy card");
+            alert("Couldn't buy card, check your wallet");
             return
         }
-        console.log("Card bought")
-        //window.location.href = "cardList-market-sell.html";
+        window.location.href = "cardList-market-buy.html";
     });
 }
 
@@ -26,26 +24,7 @@ function setCardlist(){
     setTemplate("#cardlist","#tableContent",cardList)
 }
 
-
-function setUserInfo(){
-    document.getElementById("userNameId").innerHTML= user.username;
-    document.getElementById("walletId").innerHTML= user.money;
-}
-
 document.addEventListener("DOMContentLoaded", async () => {
-    const id = localStorage.getItem("userId");
-    if(id){
-        user = await fetch("http://localhost:8080/getuserdetails", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: localStorage.getItem("userId")
-        }).then((response) => response.json());
-
-        setUserInfo();
-    }
-    
     cardList = await fetch("http://localhost:8080/getmarket", {
         method: "GET",
         headers: {
