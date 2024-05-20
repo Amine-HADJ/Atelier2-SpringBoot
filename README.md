@@ -1,5 +1,15 @@
 # Atelier2-SpringBoot
 
+## Autors :
+
+HADJ-HAMDRI Mohammed-Amine
+ROUET Liam
+PHENG Julien
+
+## Lien Gitlab
+
+https://gitlab.com/cpelyon/4eti-2023-2024/groupe-3/Atelier2-SpringBoot
+
 ## Concepts :
 Différentes architectures de conception logicielle
 - MVC
@@ -324,3 +334,10 @@ Spring Boot ?
 *L'architecture orientée événement est réactive et peut traiter de grands volumes de données en temps réel, mais peut nécessiter une gestion plus complexe des événements et des flux de données.* \
 *L'architecture orientée données est adaptée aux projets qui nécessitent une analyse et une exploitation importante des données, mais peut nécessiter une infrastructure de stockage et de traitement des données importante.* \
 *En fin de compte, le choix de l'architecture dépend des besoins et des contraintes de chaque projet.*
+
+
+
+# Éléménts non réalisés :
+La génération de prompt et d'image car les requêtes réstaient en attentes. Le code semble tout de même fonctionnel.
+Mis à part cela, nous avons répondu aux exigences du cahier des charges.
+
