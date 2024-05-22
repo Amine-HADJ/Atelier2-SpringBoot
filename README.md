@@ -41,14 +41,18 @@ graph LR
     J[InventoryRepo]
     K[CardService]
     L[DataFormatter]
+    M[ImgGeneratorService]
+    N[PromptGeneratorService]
+
 
     A -- Inscription --> B
     B -- Créer utilisateur --> E
     E -- Enregistrer utilisateur --> H
-    E -- Générer cartes --> K
-    K -- Récupérer cartes --> I
+    E -- Générer image cartes --> M
+    M -- Générer description cartes --> N
+    N -- Récupérer cartes --> I
     E -- Mettre à jour inventaire --> J
-    E -- Formatter données utilisateur --> L
+    E -- Formater données utilisateur --> L
     B -- Réponse inscription --> A
 
     A -- Authentification --> C
@@ -60,14 +64,13 @@ graph LR
     D -- Acheter carte --> G
     G -- Traiter achat --> I
     G -- Mettre à jour inventaire --> J
-    G -- Formatter données carte --> L
     D -- Réponse achat --> A
 
     A -- Vente carte --> D
     D -- Vendre carte --> G
     G -- Traiter vente --> J
     G -- Mettre à jour carte --> I
-    G -- Formatter données carte --> L
+    G -- Formater données carte --> L
     D -- Réponse vente --> A
 
 ```
@@ -208,7 +211,7 @@ Inconvénients :
   Méthode pour générer l'image des cartes (generateAllImages).
 
 - MarketService :
-  Méthode pour créer acheter (buyCard), vendre (sellCard) des cartes.
+  Méthodes pour créer acheter (buyCard), vendre (sellCard) des cartes.
 
 - PromptGeneratorService :
   Méthode pour générer la description des cartes (generateAllPrompts).
@@ -334,10 +337,3 @@ Spring Boot ?
 *L'architecture orientée événement est réactive et peut traiter de grands volumes de données en temps réel, mais peut nécessiter une gestion plus complexe des événements et des flux de données.* \
 *L'architecture orientée données est adaptée aux projets qui nécessitent une analyse et une exploitation importante des données, mais peut nécessiter une infrastructure de stockage et de traitement des données importante.* \
 *En fin de compte, le choix de l'architecture dépend des besoins et des contraintes de chaque projet.*
-
-
-
-# Éléménts non réalisés :
-La génération de prompt et d'image car les requêtes réstaient en attentes. Le code semble tout de même fonctionnel.
-Mis à part cela, nous avons répondu aux exigences du cahier des charges.
-

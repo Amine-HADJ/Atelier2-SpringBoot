@@ -47,8 +47,8 @@ public class MarketController {
 
     @PostMapping("/generateCards")
     @CrossOrigin(origins = "*")
-    public ResponseEntity<String> generateCards(@RequestBody List<Card> cards) {
-        cService.generateAllCards(cards);
+    public ResponseEntity<String> generateCards() {
+        cService.generateAllCards();
         return ResponseEntity.ok("Cards added");
     }
 }
