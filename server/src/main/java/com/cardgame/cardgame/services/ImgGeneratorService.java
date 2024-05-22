@@ -46,7 +46,7 @@ public class ImgGeneratorService {
     }
 
     public String requestImageGeneration(String prompt) {
-        String url = "https://tp.cpe.fr:8088/img-service/prompt/req";
+        String url = "http://tp.cpe.fr:8088/img-service/prompt/req";
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", token);
         String body = "{ \"promptTxt\": \"" + prompt + "\" }";
@@ -59,9 +59,15 @@ public class ImgGeneratorService {
     
 
     public String getImageGenerationStatus(String requestId) {
-        String url = "https://tp.cpe.fr:8088/img-service/prompt/req/api/" + requestId;
+        String url = "http://tp.cpe.fr:8088/img-service/prompt/req/api/" + requestId;
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
         return response.getBody();
+    }
+
+    public String getImageUrl(){
+        String url = "http://tp.cpe.fr:8088/img-service/";
+
+
     }
 
     public List<String> generateAllImages() {

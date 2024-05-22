@@ -9,6 +9,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -48,11 +49,30 @@ public class PromptGeneratorService {
         return response.getBody();
     }
 
+    //appel toutes les 5 secondes pour vérifier le statut de la génération de la description
+
+    @Scheduled(fixedRate = 5000)
     public String getPromptGenerationStatus(String requestId) {
+         //reçu dans lappel apu: "state": "PENDING" ou  "state": "FINISHED" 
+        //si state finished alors on peut récupérer le texte généré dans le champ "responsePromptTxt"
+
         String url = "https://tp.cpe.fr:8088/llm-service/prompt/req/" + requestId;
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
-        return response.getBody();
+        if  (response.getBody() == null) {
+            return "Error: Prompt generation request not found";
+        }
+
+
+        if (response.getBody().contains("PENDING")) {
+
+            return "Prompt generation in progress";
+        }
+
+      
+        // "responsePromptTxt": "", on recupere ce champ en faisant un split sur les deux points
+
+        return response.getBody().split("\"responsePromptTxt\": \"")[1];
     }
 
     public List<String> generateAllPrompts() {
@@ -64,4 +84,5 @@ public class PromptGeneratorService {
         return promptDescriptions;
     }
 
+   
 }
