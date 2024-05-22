@@ -1,0 +1,69 @@
+2024-05-22 14:29:36.523705+02:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "APP_USER" not found (this database is empty); SQL statement:
+select au1_0.id,au1_0.email,i1_0.id,au1_0.password,au1_0.username,au1_0.wallet from app_user au1_0 left join inventory i1_0 on i1_0.id=au1_0.inventory_id where au1_0.id=? [42104-224]
+2024-05-22 14:29:36.551788+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARD" not found (this database is empty); SQL statement:
+select c1_0.id,c1_0.attack,c1_0.defense,c1_0.description,c1_0.energy,c1_0.family_name,c1_0.hp,c1_0.img_src,c1_0.name,c1_0.price from card c1_0 [42104-224]
+2024-05-22 14:29:37.713142+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "APP_USER" not found (this database is empty); SQL statement:
+select au1_0.id,au1_0.email,i1_0.id,au1_0.password,au1_0.username,au1_0.wallet from app_user au1_0 left join inventory i1_0 on i1_0.id=au1_0.inventory_id where au1_0.id=? [42104-224]
+2024-05-22 14:29:37.798056+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARD" not found (this database is empty); SQL statement:
+select c1_0.id,c1_0.attack,c1_0.defense,c1_0.description,c1_0.energy,c1_0.family_name,c1_0.hp,c1_0.img_src,c1_0.name,c1_0.price from card c1_0 where c1_0.id=? [42104-224]
+2024-05-22 14:29:39.624694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "APP_USER" not found (this database is empty); SQL statement:
+select au1_0.id,au1_0.email,i1_0.id,au1_0.password,au1_0.username,au1_0.wallet from app_user au1_0 left join inventory i1_0 on i1_0.id=au1_0.inventory_id where au1_0.id=? [42104-224]
+2024-05-22 14:29:39.625628+02:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "INVENTORY" not found (this database is empty); SQL statement:
+select i1_0.id from inventory i1_0 where i1_0.id=? [42104-224]
+2024-05-22 14:29:41.623103+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "APP_USER" not found (this database is empty); SQL statement:
+select au1_0.id,au1_0.email,i1_0.id,au1_0.password,au1_0.username,au1_0.wallet from app_user au1_0 left join inventory i1_0 on i1_0.id=au1_0.inventory_id where au1_0.id=? [42104-224]
+2024-05-22 14:29:41.673551+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARD" not found (this database is empty); SQL statement:
+select c1_0.id,c1_0.attack,c1_0.defense,c1_0.description,c1_0.energy,c1_0.family_name,c1_0.hp,c1_0.img_src,c1_0.name,c1_0.price from card c1_0 where c1_0.id=? [42104-224]
+2024-05-22 14:31:00.988929+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "APP_USER" not found (this database is empty); SQL statement:
+select au1_0.id,au1_0.email,i1_0.id,au1_0.password,au1_0.username,au1_0.wallet from app_user au1_0 left join inventory i1_0 on i1_0.id=au1_0.inventory_id where au1_0.id=? [42104-224]
+2024-05-22 14:31:01.031564+02:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARD" not found (this database is empty); SQL statement:
+select c1_0.id,c1_0.attack,c1_0.defense,c1_0.description,c1_0.energy,c1_0.family_name,c1_0.hp,c1_0.img_src,c1_0.name,c1_0.price from card c1_0 where c1_0.id=? [42104-224]
+2024-05-22 14:31:10.327189+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "APP_USER" not found (this database is empty); SQL statement:
+select au1_0.id,au1_0.email,i1_0.id,au1_0.password,au1_0.username,au1_0.wallet from app_user au1_0 left join inventory i1_0 on i1_0.id=au1_0.inventory_id where au1_0.id=? [42104-224]
+2024-05-22 14:31:10.359475+02:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARD" not found (this database is empty); SQL statement:
+select c1_0.id,c1_0.attack,c1_0.defense,c1_0.description,c1_0.energy,c1_0.family_name,c1_0.hp,c1_0.img_src,c1_0.name,c1_0.price from card c1_0 where c1_0.id=? [42104-224]
+2024-05-22 14:31:15.908828+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "APP_USER" not found (this database is empty); SQL statement:
+select au1_0.id,au1_0.email,i1_0.id,au1_0.password,au1_0.username,au1_0.wallet from app_user au1_0 left join inventory i1_0 on i1_0.id=au1_0.inventory_id where au1_0.id=? [42104-224]
+2024-05-22 14:31:15.946409+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARD" not found (this database is empty); SQL statement:
+select c1_0.id,c1_0.attack,c1_0.defense,c1_0.description,c1_0.energy,c1_0.family_name,c1_0.hp,c1_0.img_src,c1_0.name,c1_0.price from card c1_0 where c1_0.id=? [42104-224]
+2024-05-22 14:31:21.030065+02:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "APP_USER" not found (this database is empty); SQL statement:
+select au1_0.id,au1_0.email,i1_0.id,au1_0.password,au1_0.username,au1_0.wallet from app_user au1_0 left join inventory i1_0 on i1_0.id=au1_0.inventory_id where au1_0.id=? [42104-224]
+2024-05-22 14:31:21.096558+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARD" not found (this database is empty); SQL statement:
+select c1_0.id,c1_0.attack,c1_0.defense,c1_0.description,c1_0.energy,c1_0.family_name,c1_0.hp,c1_0.img_src,c1_0.name,c1_0.price from card c1_0 where c1_0.id=? [42104-224]
+2024-05-22 14:31:25.144344+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARD" not found (this database is empty); SQL statement:
+select c1_0.id,c1_0.attack,c1_0.defense,c1_0.description,c1_0.energy,c1_0.family_name,c1_0.hp,c1_0.img_src,c1_0.name,c1_0.price from card c1_0 where c1_0.id=? [42104-224]
+2024-05-22 14:32:01.061512+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARD" not found (this database is empty); SQL statement:
+select c1_0.id,c1_0.attack,c1_0.defense,c1_0.description,c1_0.energy,c1_0.family_name,c1_0.hp,c1_0.img_src,c1_0.name,c1_0.price from card c1_0 where c1_0.id=? [42104-224]
+2024-05-22 14:32:19.976208+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARD" not found (this database is empty); SQL statement:
+select c1_0.id,c1_0.attack,c1_0.defense,c1_0.description,c1_0.energy,c1_0.family_name,c1_0.hp,c1_0.img_src,c1_0.name,c1_0.price from card c1_0 where c1_0.id=? [42104-224]
+2024-05-22 14:32:43.252387+02:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "APP_USER" not found (this database is empty); SQL statement:
+select au1_0.id,au1_0.email,au1_0.inventory_id,au1_0.password,au1_0.username,au1_0.wallet from app_user au1_0 where au1_0.email=? [42104-224]
+2024-05-22 14:32:45.796880+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARD" not found (this database is empty); SQL statement:
+select c1_0.id,c1_0.attack,c1_0.defense,c1_0.description,c1_0.energy,c1_0.family_name,c1_0.hp,c1_0.img_src,c1_0.name,c1_0.price from card c1_0 where c1_0.id=? [42104-224]
+2024-05-22 14:32:50.302472+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "APP_USER" not found (this database is empty); SQL statement:
+select au1_0.id,au1_0.email,au1_0.inventory_id,au1_0.password,au1_0.username,au1_0.wallet from app_user au1_0 where au1_0.email=? [42104-224]
+2024-05-22 14:34:02.304776+02:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "APP_USER" not found (this database is empty); SQL statement:
+select au1_0.id,au1_0.email,au1_0.inventory_id,au1_0.password,au1_0.username,au1_0.wallet from app_user au1_0 where au1_0.email=? [42104-224]

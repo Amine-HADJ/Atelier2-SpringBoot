@@ -15,6 +15,7 @@ function insertNavbar() {
         <div class="content">
           <span id="userNameId"></span>
           <div id="wallet" class="sub header"></div>
+          <a onclick="logout()" class="sub" style="cursor: pointer;">Logout</a>
         </div>
       </h3>
     `;
@@ -25,6 +26,11 @@ function setUserInfo(){
   navbarDiv.querySelector("#userNameId").innerHTML = user.username;
   navbarDiv.querySelector("#wallet").innerHTML = user.money+"$";
   userDetails.style.display = "block";
+}
+
+function logout(){
+  localStorage.removeItem("userId");
+  window.location.href = "/loginUser.html";
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
