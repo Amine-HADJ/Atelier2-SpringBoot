@@ -41,7 +41,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             },
             body: localStorage.getItem("userId")
         }).then((response) => response.json())
-        .then(() => setUserInfo)
-        .catch(error => authLinks.style.display = "block");
+        .catch(error => { 
+          authLinks.style.display = "block";
+          return;
+        });
+        setUserInfo();
     }
 });
