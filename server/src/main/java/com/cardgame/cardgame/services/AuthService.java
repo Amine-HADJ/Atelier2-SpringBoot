@@ -10,7 +10,7 @@ public class AuthService {
     private final UserRepo uRepo;
 
     public AuthService(UserRepo uRepo) {
-        this.uRepo = uRepo;   
+        this.uRepo = uRepo;
     }
 
     public Integer checkLogin(String identifier, String password){
