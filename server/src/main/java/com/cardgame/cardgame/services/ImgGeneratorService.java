@@ -64,8 +64,9 @@ public class ImgGeneratorService {
         return response.getBody();
     }
 
-    public String getImageUrl(){
-        String url = "http://tp.cpe.fr:8088/img-service/";
+    public String getImageUrl(String imgUrl){
+        String url = "http://tp.cpe.fr:8088/img-service/" + getImageGenerationStatus(token);
+
 
 
     }

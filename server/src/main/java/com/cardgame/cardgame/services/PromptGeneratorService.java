@@ -21,15 +21,15 @@ public class PromptGeneratorService {
     // liste de 10 prompts pour générer des descriptions
     List<String> prompts = new ArrayList<String>(Arrays.asList(
         "short description for a beautiful sunset over the ocean",
-        "short description for a cat with a hat",
-        "short description for a dog playing with a ball",
-        "short description for a dragon flying over a castle",
-        "short description for a forest with a river",
-        "short description for a house in the mountains",
-        "short description for a lion in the savannah",
-        "short description for a robot in a city",
-        "short description for a spaceship in space",
-        "short description for an unicorn in a field"
+        "short description in 20 words max for a cat with a hat",
+        "short description in 20 words max for a dog playing with a ball",
+        "short description in 20 words max for a dragon flying over a castle",
+        "short description in 20 words max for a forest with a river",
+        "short description in 20 words max for a house in the mountains",
+        "short description in 20 words max for a lion in the savannah",
+        "short description in 20 words max for a robot in a city",
+        "short description in 20 words max for a spaceship in space",
+        "short description in 20 words max for an unicorn in a field"
     ));
 
     @Value("${api.token}")
@@ -45,7 +45,6 @@ public class PromptGeneratorService {
 
         HttpEntity<String> entity = new HttpEntity<>(body, headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
-
         return response.getBody();
     }
 
@@ -53,13 +52,13 @@ public class PromptGeneratorService {
 
     @Scheduled(fixedRate = 5000)
     public String getPromptGenerationStatus(String requestId) {
-         //reçu dans lappel apu: "state": "PENDING" ou  "state": "FINISHED" 
-        //si state finished alors on peut récupérer le texte généré dans le champ "responsePromptTxt"
-
+        
         String url = "https://tp.cpe.fr:8088/llm-service/prompt/req/" + requestId;
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+        System.out.println(response.getBody());
 
-        if  (response.getBody() == null) {
+        if  (response.getBody().split("\"state\": \"")[1] == null) {
+        
             return "Error: Prompt generation request not found";
         }
 
@@ -68,9 +67,6 @@ public class PromptGeneratorService {
 
             return "Prompt generation in progress";
         }
-
-      
-        // "responsePromptTxt": "", on recupere ce champ en faisant un split sur les deux points
 
         return response.getBody().split("\"responsePromptTxt\": \"")[1];
     }
@@ -84,5 +80,8 @@ public class PromptGeneratorService {
         return promptDescriptions;
     }
 
+    
+
    
 }
+
